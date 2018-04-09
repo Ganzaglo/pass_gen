@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWin">
+   <center>
+      <TableView fx:id="tableView" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" >
+        <columns>
+            <TableColumn fx:id="tableCol1" editable="false" prefWidth="200.0" sortType="DESCENDING" sortable="false" text="Source">
+                <cellValueFactory>
+                    <PropertyValueFactory property="source" />
+                </cellValueFactory>
+
+            </TableColumn>
+
+            <TableColumn fx:id="tableCol2" editable="false" prefWidth="200.0" sortType="DESCENDING" sortable="false" text="Account name\mail">
+                <cellValueFactory>
+                    <PropertyValueFactory property="account" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="tableCol3" editable="false" prefWidth="200.0" sortType="DESCENDING" sortable="false" text="Password">
+                <cellValueFactory>
+                    <PropertyValueFactory property="password" />
+                </cellValueFactory>
+            </TableColumn>
+
+           </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#copyToClipboard" text="Copy to clipboard" />
+                <MenuItem mnemonicParsing="false" onAction="#contextEdit" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#contextDelete" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"  />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Filter: " />
+                  <TextField fx:id="filterTextField" onAction="#handleFilterChange" onKeyTyped="#handleFilterChange" />
+                <Button fx:id="generateButton" mnemonicParsing="false" onAction="#showCreationDialog" text="Generate New Password" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+        </items>
+      </ToolBar>
+   </top>
+</BorderPane>
