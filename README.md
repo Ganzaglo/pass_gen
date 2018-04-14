@@ -1,2 +1,2 @@
-# test_repository2
-Jast test 2 
+# Password generator
+Jast simple password generator + GUI
